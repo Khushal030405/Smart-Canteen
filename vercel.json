@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "smartcanteen-client/package.json", "use": "@vercel/static-build", "config": { "distDir": "build" } },
+    { "src": "smartcanteen-server/**/*.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "smartcanteen-server/$1.js" },
+    { "src": "/(.*)", "dest": "smartcanteen-client/build/$1" }
+  ]
+}
