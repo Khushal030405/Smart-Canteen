@@ -1,0 +1,74 @@
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.app-container::before,
+.app-container::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(0);
+  opacity: 0.45;
+}
+
+.app-container::before {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle at 30% 30%, rgba(30, 144, 255, 0.35), transparent 65%);
+  top: -160px;
+  right: -120px;
+}
+
+.app-container::after {
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle at 70% 70%, rgba(255, 107, 107, 0.3), transparent 70%);
+  bottom: -140px;
+  left: -110px;
+}
+
+.main-content {
+  flex: 1 1 auto;
+  padding: 32px 24px 48px;
+  width: min(1200px, 100%);
+  margin: 0 auto;
+}
+
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  min-width: 220px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow-strong);
+  backdrop-filter: blur(12px);
+  background: rgba(31, 42, 61, 0.85);
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.toast-info {
+  background: linear-gradient(135deg, #1e90ff, #5aa9ff);
+}
+
+.toast-success {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.toast-error {
+  background: linear-gradient(135deg, #ff6b6b, #f94d6a);
+}
+
+.toast-warning {
+  background: linear-gradient(135deg, #ffd166, #f7b733);
+  color: #1f2a3d;
+}
