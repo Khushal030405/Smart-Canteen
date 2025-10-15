@@ -20,6 +20,15 @@ exports.placeOrder = async (req, res) => {
   try {
     const { items, totalPrice, status } = req.body;
 
+    // Debug: log decoded user
+    console.log('Decoded user:', req.user);
+
+    // Accept both id and _id for user
+    const userId = req.user?.id || req.user?._id;
+    if (!userId) {
+      return res.status(401).json({ message: 'User not authenticated or token invalid' });
+    }
+
     if (!Array.isArray(items) || items.length === 0) {
       return res.status(400).json({ message: 'Order items are required' });
     }
